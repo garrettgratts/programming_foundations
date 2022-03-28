@@ -75,6 +75,7 @@ def calculation(operation, num1, num2)
   end
 end
 
+# begin execution
 puts prompt('welcome')
 
 # ask for user name and validate
@@ -82,11 +83,9 @@ name = get_name
 
 puts prompt('greeting') + " #{name}!" # Problem interpolating name variable.
 
-# getting and validating user input
 loop do # main loop
   number1 = get_number1
 
-# getting and validating user input
   number2 = get_number2
 
   puts prompt('operator_prompt') # Does not display above text properly.
