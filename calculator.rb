@@ -1,8 +1,16 @@
 # greet user
 # retrieve name
 # retreive first and second numbers
-# calculate 
+# calculate
 # repeat if desired
+LANGUAGE = 'english'
+
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
+def messages(message, lang='english')
+  MESSAGES[lang][message]
+end
 
 def prompt(msg)
   puts "=> #{msg}"
@@ -13,7 +21,7 @@ def name_validator
     name = gets.chomp
 
     return name if name != ''
-    prompt('Please enter a valid name')
+    prompt(messages('invalid_name'))
   end
 end
 
@@ -28,7 +36,7 @@ def num_retriever
     if num_validator(user_input)
       return user_input
     else
-      prompt('Please enter valid number')
+      prompt(messages('invalid_number'))
     end
   end
 end
@@ -39,12 +47,12 @@ end
 
 def get_operator
   loop do
-  operator = gets.chomp
+    operator = gets.chomp
 
     if valid_operator(operator)
       return operator
     else
-      prompt('Please enter valid number')
+      prompt(messages('invalid_number'))
     end
   end
 end
@@ -57,28 +65,48 @@ def integer?(num)
   num.to_i.to_s == num
 end
 
-def calculate(operator, num1, num2)
-  if 
-  
-  case operator
-  when '1'
-  when '2'
-  when '3'
-  when '4'
+def convert(num)
+  return num.to_i if integer?(num)
+  return num.to_f if float?(num)
 end
 
-prompt('Hello, welcome to calculator! Enter your name:')
-name = name_validator
+def calculate(operator, first_number, second_number)
+  case operator
+  when '1'
+    first_number + second_number
+  when '2'
+    first_number - second_number
+  when '3'
+    first_number * second_number
+  when '4'
+    first_number / second_number
+  end
+end
 
-prompt("Hello, #{name}!")
+loop do
+  prompt(messages('welcome'))
+  name = name_validator
 
-prompt('Enter first number:')
-first_number = num_retriever
+  prompt("Hello, #{name}!")
 
-prompt('Enter second number:')
-second_number = num_retriever
+  prompt(messages('first_number'))
+  first_number = num_retriever
 
-prompt('Select method of operation: 1) add 2) subtract 3) multiply 4) divide')
-operator = get_operator
+  prompt(messages('second_number'))
+  second_number = num_retriever
 
-calculate(operator, first_number, second_number)
+  prompt(messages('operator_prompt'))
+  operator = get_operator
+
+  first_number = convert(first_number)
+  second_number = convert(second_number)
+
+  result = calculate(operator, first_number, second_number)
+
+  prompt("The result is #{result}")
+
+  prompt(messages('retry?'))
+
+  answer = gets.chomp
+  break unless answer.downcase.start_with?('y')
+end

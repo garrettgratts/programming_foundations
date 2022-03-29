@@ -3,10 +3,9 @@ english:
   welcome: "Welcome to Calculator! Enter your name:"
   invalid_name: "Make sure to enter a valid name."
   greeting: "Hi"
-  number1: "What's the first number?"
-  invalid_number1: "Hmm... that doesn't look like valid number"
-  number2: "What's the second number?"
-  invalid_number2: "Hmm... that doesn't look like valid number"
+  first_number: "What's the first number?"
+  invalid_number: "Hmm... that doesn't look like valid number"
+  second_number: "What's the second number?"
   operator_prompt: |
                     What operation would you like to perform?
                         1) add
@@ -16,17 +15,16 @@ english:
   valid_operator: "Must choose 1, 2, 3, or 4"
   process: "The two numbers are being"
   result: "The result is"
-  retry: "Do you want to perform another calculation? (Y to calculate again)"
+  retry?: "Do you want to perform another calculation? (Y to calculate again)"
   goodbye: "Thank you for using calculator!"
 
 hindi:
   welcome: "Calculator mein aapaka svaagat hai! Apana naam darj karen:"
-  valid_name: "Ek maany naam darj karana sunishchit karen."
+  invalid_name: "Ek maany naam darj karana sunishchit karen."
   greeting: "Namaskaar"
-  number1: "Pahala nambar kya hai?"
-  valid_number1: "Hamm... yah maany sankhya kee tarah nahin dikhata"
-  number2: "Doosara nambar kya hai?"
-  valid_number2: "Hamm... yah maany sankhya kee tarah nahin dikhata"
+  first_number: "Pahala nambar kya hai?"
+  invalid_number1: "Hamm... yah maany sankhya kee tarah nahin dikhata"
+  second_number: "Doosara nambar kya hai?"
   operator_prompt: |
                     Aap kaun sa opareshan karana chaahenge?
                         1) joden
@@ -36,5 +34,5 @@ hindi:
   valid_operator: "Ek, do, teen, ya chaar chunana hoga"
   process: "Do nambar ho rahe hain"
   result: "Parinaam hai"
-  retry: "Kya aap ek aur ganana karana chaahate hain? (y phir se ganana karane ke lie)"
+  retry?: "Kya aap ek aur ganana karana chaahate hain? (y phir se ganana karane ke lie)"
   goodbye: "Calculator ka upayog karane ke lie dhanyavaad!"
