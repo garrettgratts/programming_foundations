@@ -2,7 +2,7 @@
 english:
   welcome: "Welcome to Calculator! Enter your name:"
   invalid_name: "Make sure to enter a valid name."
-  greeting: "Hi"
+  greeting: "Hello"
   first_number: "What's the first number?"
   invalid_number: "Hmm... that doesn't look like valid number"
   second_number: "What's the second number?"

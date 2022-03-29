@@ -12,16 +12,21 @@ def messages(message, lang='english')
   MESSAGES[lang][message]
 end
 
-def prompt(msg)
-  puts "=> #{msg}"
+def prompt(key)
+  messages = messages(key,LANGUAGE)
+  "=> #{messages}"
 end
+
+# def ruby_prompt(msg)
+#   puts "=> #{msg}"
+# end
 
 def name_validator
   loop do
     name = gets.chomp
 
     return name if name != ''
-    prompt(messages('invalid_name'))
+    puts prompt('invalid_name')
   end
 end
 
@@ -33,11 +38,8 @@ def num_retriever
   loop do
     user_input = gets.chomp
 
-    if num_validator(user_input)
-      return user_input
-    else
-      prompt(messages('invalid_number'))
-    end
+    return user_input if num_validator(user_input)
+    puts prompt('invalid_number')
   end
 end
 
@@ -49,11 +51,8 @@ def get_operator
   loop do
     operator = gets.chomp
 
-    if valid_operator(operator)
-      return operator
-    else
-      prompt(messages('invalid_number'))
-    end
+    return operator if valid_operator(operator)
+    puts prompt('invalid_number')
   end
 end
 
@@ -65,7 +64,7 @@ def integer?(num)
   num.to_i.to_s == num
 end
 
-def convert(num)
+def numeric(num)
   return num.to_i if integer?(num)
   return num.to_f if float?(num)
 end
@@ -83,30 +82,33 @@ def calculate(operator, first_number, second_number)
   end
 end
 
-loop do
-  prompt(messages('welcome'))
-  name = name_validator
+puts prompt('welcome')
+name = name_validator
 
-  prompt("Hello, #{name}!")
+puts prompt('Hello') + " #{name}!"
 
-  prompt(messages('first_number'))
+loop do # main loop
+  puts prompt('first_number')
   first_number = num_retriever
 
-  prompt(messages('second_number'))
+  puts prompt('second_number')
   second_number = num_retriever
 
-  prompt(messages('operator_prompt'))
+  puts prompt('operator_prompt')
   operator = get_operator
 
-  first_number = convert(first_number)
-  second_number = convert(second_number)
+  first_number = numeric(first_number) # string to numeral
+  second_number = numeric(second_number)
 
   result = calculate(operator, first_number, second_number)
 
-  prompt("The result is #{result}")
+  puts prompt('') # the numbers are being + "#{added...}"
+  puts prompt('result') + " #{result}"
 
-  prompt(messages('retry?'))
+  puts prompt('retry?')
 
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
+
+puts prompt('goodbye')
