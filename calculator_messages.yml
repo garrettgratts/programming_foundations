@@ -13,6 +13,7 @@ english:
                         3) multiply
                         4) divide
   valid_operator: "Must choose 1, 2, 3, or 4"
+  zero_division_error: "Beyond current human comprehension. Please try again!"
   process: "The two numbers are being"
   result: "The result is"
   retry?: "Do you want to perform another calculation? (Y to calculate again)"
@@ -32,7 +33,28 @@ hindi:
                         3) guna karana
                         4) vibhaajan
   valid_operator: "Ek, do, teen, ya chaar chunana hoga"
+  zero_division_error: "Vartamaan maanav samajh se pare. Krpaya pun: prayaas karen!"
   process: "Do nambar ho rahe hain"
   result: "Parinaam hai"
   retry?: "Kya aap ek aur ganana karana chaahate hain? (y phir se ganana karane ke lie)"
   goodbye: "Calculator ka upayog karane ke lie dhanyavaad!"
+
+tagalog:
+  welcome: "Maligayang pagdating sa Calculator! Ilagay ang iyong pangalan:"
+  invalid_name: "Tiyaking maglagay ng wastong pangalan."
+  greeting: "Kamusta"
+  first_number: "Ano ang unang numero?"
+  invalid_number: "Hmm... mukhang hindi valid number yan"
+  second_number: "Ano ang pangalawang numero?"
+  operator_prompt: |
+                    Anong operasyon ang gusto mong gawin?
+                        1) idagdag
+                        2) ibawas
+                        3) magparami
+                        4) hatiin
+  valid_operator: "Dapat pumili ng isa, dalawa, tatlo, o apat"
+  zero_division_error: "Higit pa sa kasalukuyang pang-unawa ng tao. Pakisubukang muli!"
+  process: "Ang dalawang numero ay nagiging"
+  result: "Ang resulta ay"
+  retry?: "Gusto mo bang magsagawa ng isa pang pagkalkula? (Y upang kalkulahin muli)"
+  goodbye: "Salamat sa paggamit ng calculator!"

@@ -1,8 +1,3 @@
-# greet user
-# retrieve name
-# retreive first and second numbers
-# calculate
-# repeat if desired
 LANGUAGE = 'english'
 
 require 'yaml'
@@ -14,32 +9,32 @@ end
 
 def prompt(key)
   messages = messages(key,LANGUAGE)
-  "=> #{messages}"
+  puts "=> #{messages}"
 end
 
-# def ruby_prompt(msg)
-#   puts "=> #{msg}"
-# end
+def valid_name?(name)
+  name != ''
+end
 
-def name_validator
+def get_name
   loop do
     name = gets.chomp
 
-    return name if name != ''
-    puts prompt('invalid_name')
+    return name if valid_name?(name)
+    prompt('invalid_name')
   end
 end
 
 def num_validator(num)
-  (num.to_i.to_s == num) || (num.to_f.to_s == num)
+  num.to_i.to_s == num || num.to_f.to_s == num
 end
 
-def num_retriever
+def get_number
   loop do
     user_input = gets.chomp
 
     return user_input if num_validator(user_input)
-    puts prompt('invalid_number')
+    prompt('invalid_number')
   end
 end
 
@@ -47,12 +42,12 @@ def valid_operator(num)
   %w(1 2 3 4).include?(num)
 end
 
-def get_operator
+def get_operation
   loop do
-    operator = gets.chomp
+    operation = gets.chomp
 
-    return operator if valid_operator(operator)
-    puts prompt('invalid_number')
+    return operation if valid_operator(operation)
+    prompt('invalid_number')
   end
 end
 
@@ -82,33 +77,46 @@ def calculate(operator, first_number, second_number)
   end
 end
 
-puts prompt('welcome')
-name = name_validator
+def dividing_by_zero(operator, denominator)
+  operator == '4' && denominator == '0'
+end
 
-puts prompt('Hello') + " #{name}!"
+def get_operator(first_number, second_number)
+  loop do # get operator and check for zero division
+    operator = get_operation
 
-loop do # main loop
-  puts prompt('first_number')
-  first_number = num_retriever
+    return operator unless dividing_by_zero(operator, second_number)
+    prompt('zero_division_error')
+  end
+end
 
-  puts prompt('second_number')
-  second_number = num_retriever
+# Start program
+prompt('welcome')
+name = get_name
 
-  puts prompt('operator_prompt')
-  operator = get_operator
+puts "Hello #{name}!"
 
-  first_number = numeric(first_number) # string to numeral
+loop do
+  prompt('first_number')
+  first_number = get_number
+
+  prompt('second_number')
+  second_number = get_number
+
+  prompt('operator_prompt')
+  operator = get_operator(first_number, second_number)
+
+  first_number  = numeric(first_number) # string to numeral
   second_number = numeric(second_number)
 
   result = calculate(operator, first_number, second_number)
 
-  puts prompt('') # the numbers are being + "#{added...}"
-  puts prompt('result') + " #{result}"
+  puts "The result is #{result}"
 
-  puts prompt('retry?')
+  prompt('retry?')
 
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
-puts prompt('goodbye')
+prompt('goodbye')
