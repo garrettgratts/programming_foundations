@@ -9,7 +9,7 @@ def messages(message, lang='english')
 end
 
 def prompt(key)
-  messages = messages(key,LANGUAGE)
+  messages = messages(key, LANGUAGE)
   puts "=> #{messages}"
 end
 
@@ -82,7 +82,7 @@ def dividing_by_zero(operator, denominator)
   operator == '4' && denominator == '0'
 end
 
-def get_operator(first_number, second_number)
+def get_operator(second_number)
   loop do # get operator and check for zero division
     operator = get_operation
 
@@ -105,7 +105,7 @@ loop do
   second_number = get_number
 
   prompt('operator_prompt')
-  operator = get_operator(first_number, second_number)
+  operator = get_operator(second_number)
 
   first_number  = numeric(first_number) # string to numeral
   second_number = numeric(second_number)
