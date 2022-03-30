@@ -1,4 +1,5 @@
 LANGUAGE = 'english'
+OPERATORS = %w(1 2 3 4)
 
 require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
@@ -39,7 +40,7 @@ def get_number
 end
 
 def valid_operator(num)
-  %w(1 2 3 4).include?(num)
+  OPERATORS.include?(num)
 end
 
 def get_operation
