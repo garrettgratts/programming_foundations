@@ -33,7 +33,6 @@ def calculation(principle, monthly_apr, months)
 end
 
 def get_integer_input
-  
   loop do
     input = get_input
 
@@ -47,16 +46,13 @@ loop do
   prompt("-------------------------------")
 
   prompt("What is the principle?")
-
   principle = get_input
 
   prompt("What is the interest rate?")
   prompt("(Example: 5 for 5% or 2.5 for 2.5%)")
-
   interest_rate = get_input
 
   prompt("What is the loan duration (in years)?")
-
   years = get_integer_input
 
   apr = interest_rate.to_f / 100
@@ -66,7 +62,6 @@ loop do
   monthly_payment = calculation(principle, monthly_apr, months)
 
   prompt("Your monthly payment is: $#{format('%.2f', monthly_payment)}")
-
   prompt("Calculate again? (Y to calculate again)")
 
   answer = Kernel.gets.chomp
