@@ -90,13 +90,11 @@ comp_score = 0
 loop do
   prompt('Make your choice:')
   choice = get_choice
-
   computer_choice = CHOICES.sample
 
   prompt("You chose #{choice}; computer chose #{computer_choice}")
 
   result = compare_choice(choice, computer_choice)
-
   display_result(result)
 
   if result == 'win'
