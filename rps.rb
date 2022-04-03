@@ -1,47 +1,115 @@
-VALID_CHOICES = %w(rock paper scissors)
+CHOICES = %w(rock paper scissors lizard spock)
 
 def prompt(message)
-  Kernel.puts("=> #{message}")
+  puts "=> #{message}"
 end
 
-def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+def win_logic (user, computer)
+  user == 'scissors' && computer == 'paper' ||
+    user == 'paper' && computer == 'rock' ||
+    user == 'rock' && computer == 'lizard' ||
+    user == 'lizard' && computer == 'spock' ||
+    user == 'spock' && computer == 'scissors' ||
+    user == 'scissors' && computer == 'lizard' ||
+    user == 'lizard' && computer == 'paper' ||
+    user == 'paper' && computer == 'spock' ||
+    user == 'spock' && computer == 'rock' ||
+    user == 'rock' && computer == 'scissors'
 end
 
-def display_results(player, computer)
-  if win?(player, computer)
-    prompt("You won!")
-  elsif win?(computer, player)
-    prompt("Computer won!")
-  else
-    prompt("It's a tie!")
+def get_choice
+  loop do
+    input = gets.chomp
+
+    return input if CHOICES.include?(input)
+    prompt('Hmm... that does not look like a valid answer.')
   end
 end
 
-loop do
-  choice = ''
-  loop do
-    prompt("Choose one: #{VALID_CHOICES.join(', ')}")
-    choice = Kernel.gets().chomp()
+def valid_choice(input)
+  input == 'r' ||
+    input == 'p' ||
+    input == 'sc' ||
+    input == 'l' ||
+    input == 'sp' ||
+    input == 'rock' ||
+    input == 'paper' ||
+    input == 'scissors' ||
+    input == 'lizard' ||
+    input == 'spock'
+end
 
-    if VALID_CHOICES.include?(choice)
-      break
+def get_choice
+  loop do
+    input = gets.chomp
+  
+    return input if valid_choice(input)
+    prompt('Hmm... that does not look like valid choice')
+  end
+end
+
+def compare_choice(user, computer)
+  if win_logic(user, computer)
+    'win'
+  elsif win_logic(computer, user)
+    'lose'
+  else
+    'tie'
+  end
+end
+
+def display_result(result)
+  if result == 'win'
+    prompt('You win!')
+  elsif
+    result == 'lose'
+    prompt('You lost!')
+  else
+    prompt('It is a tie!')
+  end
+end
+
+def get_answer
+  loop do
+    input = gets.chomp.downcase
+
+    if input.start_with?('y') || input.start_with?('n')
+      return input
     else
-      prompt("That's not a valid choice.")
+      prompt('Hmm... that does not look like a valid answer')
     end
   end
-
-  computer_choice = VALID_CHOICES.sample()
-
-  Kernel.puts("You chose #{choice}; Computer chose #{computer_choice}")
-
-  display_results(choice, computer_choice)
-
-  prompt("Do you want to play again?")
-  answer = Kernel.gets().chomp()
-  break unless answer.downcase().start_with?('y')
 end
 
-prompt("Thank you for playing. Good bye!")
+prompt('Welcome to rock paper scissors lizard spock!')
+prompt('This is a best of 5!')
+
+user_score = 0
+comp_score = 0
+
+loop do
+  prompt('Make your choice:')
+  choice = get_choice
+
+  computer_choice = CHOICES.sample
+
+  prompt("You chose #{choice}; computer chose #{computer_choice}")
+
+  result = compare_choice(choice, computer_choice)
+
+  display_result(result)
+
+  if result == 'win'
+    user_score += 1
+  elsif result == 'lose'
+    comp_score += 1
+  else result == 'tie'
+    (user_score += 0) && (comp_score += 0)
+  end
+
+  p user_score
+  p comp_score
+  break if user_score == 3 || comp_score == 3
+end
+
+prompt('Thank you for playing rock paper scissors lizard spock!')
