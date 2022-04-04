@@ -4,13 +4,9 @@ OPERATORS = %w(1 2 3 4)
 require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 
-def messages(message, lang='english')
-  MESSAGES[lang][message]
-end
-
 def prompt(key)
-  messages = messages(key, LANGUAGE)
-  puts "=> #{messages}"
+  message = MESSAGES[LANGUAGE][key]
+  puts "=> #{message}"
 end
 
 def valid_name?(name)
@@ -19,7 +15,7 @@ end
 
 def get_name
   loop do
-    name = gets.chomp
+    name = gets.chomp.delete "\s"
 
     return name if valid_name?(name)
     prompt('invalid_name')
@@ -91,6 +87,15 @@ def get_operator(second_number)
   end
 end
 
+def get_answer
+  loop do
+    answer = gets.chomp
+
+    return answer if answer == 'y' || answer == 'n'
+    prompt('invalid_answer')
+  end
+end
+
 # Start program
 prompt('welcome')
 name = get_name
@@ -116,8 +121,8 @@ loop do
 
   prompt('retry?')
 
-  answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  answer = get_answer
+  break if answer == 'n'
 end
 
 prompt('goodbye')

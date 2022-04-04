@@ -1,5 +1,9 @@
-def prompt(message)
-  Kernel.puts("=> #{message}")
+require 'yaml'
+MESSAGES = YAML.load_file('loan_messages.yml')
+
+def prompt(key)
+  message = MESSAGES[key]
+  puts "=> #{message}"
 end
 
 def integer?(input)
@@ -20,10 +24,10 @@ end
 
 def get_input
   loop do
-    user_input = gets.chomp
+    user_input = gets.chomp.delete "\s"
 
     return user_input if valid_input?(user_input)
-    prompt("Must enter positive number.")
+    prompt('invalid_input')
   end
 end
 
@@ -37,22 +41,28 @@ def get_integer_input
     input = get_input
 
     return input unless float?(input)
-    prompt("Part of a year? Please try again, how many years?")
+    prompt('invalid_year')
+  end
+end
+
+def get_answer
+  loop do
+    answer = gets.chomp.downcase
+
+    return answer if answer == 'y' || answer == 'n'
+    prompt('invalid_answer')
   end
 end
 
 loop do
-  prompt("Welcome to Mortgage Calculator!")
-  prompt("-------------------------------")
-
-  prompt("What is the principle?")
+  prompt('greeting')
+  prompt('principle')
   principle = get_input
 
-  prompt("What is the interest rate?")
-  prompt("(Example: 5 for 5% or 2.5 for 2.5%)")
+  prompt('interest_rate')
   interest_rate = get_input
 
-  prompt("What is the loan duration (in years)?")
+  prompt('loan_duration')
   years = get_integer_input
 
   apr = interest_rate.to_f / 100
@@ -61,12 +71,21 @@ loop do
 
   monthly_payment = calculation(principle, monthly_apr, months)
 
-  prompt("Your monthly payment is: $#{format('%.2f', monthly_payment)}")
-  prompt("Calculate again? (Y to calculate again)")
+  mortgage_info = <<-MSG
+  --------------------------------------
+  Principle: $#{principle}
+  Interest Rate: #{interest_rate}%
+  Loan Duration: #{years} years
 
-  answer = Kernel.gets.chomp
-  break unless answer.downcase.start_with?('y')
+  Your monthly payment is $#{monthly_payment.to_i}
+  --------------------------------------
+  MSG
+
+  puts mortgage_info # didn't interpolate ruby and yaml
+  prompt('calculate_again?')
+
+  answer = get_answer
+  break if answer == 'n'
 end
 
-prompt("Thank you for using the Mortgage Calculator!")
-prompt("Goodbye!")
+prompt('goodbye')

@@ -16,7 +16,8 @@ english:
   zero_division_error: "Beyond current human comprehension. Please try again!"
   process: "The two numbers are being"
   result: "The result is"
-  retry?: "Do you want to perform another calculation? (Y to calculate again)"
+  retry?: "Do you want to perform another calculation? (y/n to calculate again)"
+  invalid_answer: "Hmm... that doesn't look like a valid answer"
   goodbye: "Thank you for using calculator!"
 
 hindi:
@@ -36,7 +37,8 @@ hindi:
   zero_division_error: "Vartamaan maanav samajh se pare. Krpaya pun: prayaas karen!"
   process: "Do nambar ho rahe hain"
   result: "Parinaam hai"
-  retry?: "Kya aap ek aur ganana karana chaahate hain? (y phir se ganana karane ke lie)"
+  retry?: "Kya aap ek aur ganana karana chaahate hain? (y/n phir se ganana karane ke lie)"
+  invalid_answer: "Hamm ... yah ek vaidh uttar kee tarah nahin dikhata"
   goodbye: "Calculator ka upayog karane ke lie dhanyavaad!"
 
 tagalog:
@@ -56,5 +58,6 @@ tagalog:
   zero_division_error: "Higit pa sa kasalukuyang pang-unawa ng tao. Pakisubukang muli!"
   process: "Ang dalawang numero ay nagiging"
   result: "Ang resulta ay"
-  retry?: "Gusto mo bang magsagawa ng isa pang pagkalkula? (Y upang kalkulahin muli)"
+  retry?: "Gusto mo bang magsagawa ng isa pang pagkalkula? (y/n upang kalkulahin muli)"
+  invalid_answer: "Hmm... mukhang hindi valid na sagot yan"
   goodbye: "Salamat sa paggamit ng calculator!"
