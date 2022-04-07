@@ -1,5 +1,3 @@
-=begin
-
 Question 1
 
 1
@@ -46,4 +44,4 @@ Question 8
 flintstones.flatten.select! { |element| element == "Barney" || element == 2 }
 
 flintstones.assoc("Barney")
-=end
+
