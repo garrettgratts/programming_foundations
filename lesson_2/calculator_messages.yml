@@ -1,0 +1,63 @@
+
+english:
+  welcome: "Welcome to Calculator! Enter your name:"
+  invalid_name: "Make sure to enter a valid name."
+  greeting: "Hello"
+  first_number: "What's the first number?"
+  invalid_number: "Hmm... that doesn't look like valid number"
+  second_number: "What's the second number?"
+  operator_prompt: |
+                    What operation would you like to perform?
+                        1) add
+                        2) subtract
+                        3) multiply
+                        4) divide
+  valid_operator: "Must choose 1, 2, 3, or 4"
+  zero_division_error: "Beyond current human comprehension. Please try again!"
+  process: "The two numbers are being"
+  result: "The result is"
+  retry?: "Do you want to perform another calculation? (y/n to calculate again)"
+  invalid_answer: "Hmm... that doesn't look like a valid answer"
+  goodbye: "Thank you for using calculator!"
+
+hindi:
+  welcome: "Calculator mein aapaka svaagat hai! Apana naam darj karen:"
+  invalid_name: "Ek maany naam darj karana sunishchit karen."
+  greeting: "Namaskaar"
+  first_number: "Pahala nambar kya hai?"
+  invalid_number1: "Hamm... yah maany sankhya kee tarah nahin dikhata"
+  second_number: "Doosara nambar kya hai?"
+  operator_prompt: |
+                    Aap kaun sa opareshan karana chaahenge?
+                        1) joden
+                        2) ghataana
+                        3) guna karana
+                        4) vibhaajan
+  valid_operator: "Ek, do, teen, ya chaar chunana hoga"
+  zero_division_error: "Vartamaan maanav samajh se pare. Krpaya pun: prayaas karen!"
+  process: "Do nambar ho rahe hain"
+  result: "Parinaam hai"
+  retry?: "Kya aap ek aur ganana karana chaahate hain? (y/n phir se ganana karane ke lie)"
+  invalid_answer: "Hamm ... yah ek vaidh uttar kee tarah nahin dikhata"
+  goodbye: "Calculator ka upayog karane ke lie dhanyavaad!"
+
+tagalog:
+  welcome: "Maligayang pagdating sa Calculator! Ilagay ang iyong pangalan:"
+  invalid_name: "Tiyaking maglagay ng wastong pangalan."
+  greeting: "Kamusta"
+  first_number: "Ano ang unang numero?"
+  invalid_number: "Hmm... mukhang hindi valid number yan"
+  second_number: "Ano ang pangalawang numero?"
+  operator_prompt: |
+                    Anong operasyon ang gusto mong gawin?
+                        1) idagdag
+                        2) ibawas
+                        3) magparami
+                        4) hatiin
+  valid_operator: "Dapat pumili ng isa, dalawa, tatlo, o apat"
+  zero_division_error: "Higit pa sa kasalukuyang pang-unawa ng tao. Pakisubukang muli!"
+  process: "Ang dalawang numero ay nagiging"
+  result: "Ang resulta ay"
+  retry?: "Gusto mo bang magsagawa ng isa pang pagkalkula? (y/n upang kalkulahin muli)"
+  invalid_answer: "Hmm... mukhang hindi valid na sagot yan"
+  goodbye: "Salamat sa paggamit ng calculator!"

@@ -1,0 +1,15 @@
+greeting: |
+  Welcome to Mortgage Calculator! 
+  => -------------------------------
+principle: "What is the principle?"
+invalid_input: "Must enter a positive number"
+interest_rate: |
+  What is the interest rate?
+  => (Example: 5 for 5% or 2.5 for 2.5%)
+loan_duration: "What is the loan duration (in years)?"
+invalid_year: "Part of a year? Please try again, how many years?"
+calculate_again?: "Calculate again? (Y/N to calculate again)"
+invalid_answer: "Hmm...that does not look like a valid answer"
+goodbye: |
+  Thank you for using the Mortgage Calculate!
+  => Goodbye!
