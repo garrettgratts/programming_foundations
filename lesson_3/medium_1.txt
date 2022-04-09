@@ -1,0 +1,29 @@
+Question 1
+
+10.times { |number| puts (" " * number) + "The Flintstones Rock!" }
+
+Question 2
+
+The error comes from attemping to concanenate a string with an integer
+"the value of 40 + 2 is #{40 + 2}"
+"the value of 40 + 2 is " + (40 + 2).to_s
+
+Question 3
+
+until divisor == 0
+  factors << number / divisor if number % divisor == 0
+  divisor -= 1
+end
+
+Bonus 1: For a number to be a factor, it cannot create a remainder
+Bonus 2: The method won't return the array of factors. Loops return nil by default. 
+
+Question 4
+
+rolling_buffer1 will mutate the array passed in, and return a new one
+rolling_buffer2 will only return a new array
+
+Question 5
+
+Method definitions are self contained with respect to local variables.
+Just pass it in with a parameter.
