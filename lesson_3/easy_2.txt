@@ -1,1 +1,52 @@
-this is text
+Question 1
+
+ages["Spot"]
+ages.include?("Spot")
+ages.key?("Spot")
+
+Question 2
+
+munsters_description.swapcase!
+munsters_description.capitalize!
+munsters_description.downcase!
+munsters_description.upcase!
+
+Question 3
+
+ages["Marilyn"] = 22
+ages["Spot"] = 237 
+
+ages.merge!(additional_ages)
+
+Question 4
+
+advice.match?("Dino")
+
+Question 5
+
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+Question 6
+
+flintstones << "Dino"
+
+Question 7
+
+flintstones << "Dino" << "Hoppy"
+flintstones.push("Dino").push("Hoppy")
+flintstones.concat(%w(Dino Hoppy))
+
+Question 8
+
+advice.slice!("Few things in life are as important as ")
+advice.slice!(0, 36)
+advice.slice!(0, advice.index('house'))
+
+Question 9
+
+statement.chars.count('t')
+statement.count('t')
+
+Question 10 
+
+
