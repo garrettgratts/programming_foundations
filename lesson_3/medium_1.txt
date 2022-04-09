@@ -27,3 +27,19 @@ Question 5
 
 Method definitions are self contained with respect to local variables.
 Just pass it in with a parameter.
+
+Question 6
+
+34. Remember, number are immutable in Ruby!
+
+Question 7
+
+Yes, the family's data got ransacked. hash[key] = value is destructive.
+
+Question 8
+
+"Paper"
+
+Question 9
+
+"no"
