@@ -1,0 +1,27 @@
+Question 1
+
+Spent some time reading that
+
+Question 2
+
+Spent a while looking at this too.
+
+Question 3
+
+My string looks like this now: pumpkins
+My array looks like this now: ["pumpkins", "rutabaga"]
+
+Question 4
+
+My string looks like this now: pumpkinsrutabaga
+My array looks like this now: ["pumpkins"]
+
+Question 5
+
+a_string_param += "rutabaga"
+an_array_param += ["rutabaga"]
+
+Question 6 
+
+color == "blue" || color == "green"
+
