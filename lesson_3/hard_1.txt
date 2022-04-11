@@ -1,0 +1,32 @@
+Question 1
+
+Greeting would return nil
+
+Question 2
+
+The output is { a: => "hi there" }, because the variable is referring to
+the same object as the hash.
+
+informal_greeting = greetings[:a]
+informal_greeting << ' there'
+
+Question 3
+
+A) 
+One is: one
+Two is: two
+Three is: three
+
+B) 
+One is: one
+Two is: two
+Three is: three
+
+C)
+One is: two
+Two is: three
+Three is: one
+
+Question 4
+
+return false if dot_separated_words.size != 4
