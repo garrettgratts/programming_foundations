@@ -57,7 +57,7 @@ def display_result(result)
 end
 
 def game_complete?(player_score, computer_score)
-  player_score == 3 || computer_score == 3
+  player_score == [3] || computer_score == [3]
 end
 
 def display_grand_winner(player_score, computer_score)
@@ -79,11 +79,16 @@ def get_answer
   end
 end
 
+def reset(player_score, computer_score)
+  player_score[0] = 0
+  computer_score[0] = 0
+end
+
 prompt('Welcome to Rock Paper Scissors Lizard Spock!')
 prompt('Compete in a best of 5 versus HAL 9000!')
 
-player_score = 0
-computer_score = 0
+player_score = [0]
+computer_score = [0]
 
 loop do
   prompt('Make your choice:')
@@ -95,8 +100,8 @@ loop do
   result = compare_choice(player_choice, computer_choice)
   display_result(result)
 
-  player_score   += 1 if result == 'win'
-  computer_score += 1 if result == 'lose'
+  player_score[0]   += 1 if result == 'win'
+  computer_score[0] += 1 if result == 'lose'
 
   prompt("#{player_score} vs #{computer_score}")
 
@@ -106,8 +111,7 @@ loop do
     prompt('Play again? (y/n)')
     break if get_answer == 'n'
 
-    player_score = 0
-    computer_score = 0
+    reset(player_score, computer_score)
   end
 end
 
