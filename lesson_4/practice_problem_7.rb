@@ -19,12 +19,12 @@ Algorithm
 =end
 
 statement = 'The Flintstones Rock'
-full_name = 'Garrett Chadwick Gratts'
+
+# defining a method that takes a string and returns a hash of character frequencies
 
 def letter_frequency(string)
   frequency_hash = {}
-  string_arr = string.chars
-  string_arr.delete(' ')
+  string_arr = string.delete(' ').chars
 
   string_arr.each do |character|
     frequency = string_arr.count(character)
@@ -35,3 +35,15 @@ def letter_frequency(string)
 end
 
 letter_frequency(full_name)
+
+# version with no method definition
+
+frequency_hash = {}
+string_arr = statement.delete(' ').chars
+
+string_arr.each do |character|
+  character_frequency = string_arr.count(character)
+  frequency_hash[character] = character_frequency
+end
+
+p frequency_hash
