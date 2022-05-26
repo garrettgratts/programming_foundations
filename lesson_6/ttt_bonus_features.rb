@@ -56,7 +56,7 @@ def player_places_piece!(brd)
   brd[square] = PLAYER_MARKER
 end
 
-def computer_ai_algo(brd, marker) # returns square or nil
+def computer_ai_algo(brd, marker)
   square = nil
   WINNING_LINES.each do |line|
     square = find_at_risk_square(brd, line, marker)
@@ -66,9 +66,9 @@ def computer_ai_algo(brd, marker) # returns square or nil
 end
 
 def computer_places_piece!(brd)
-  square = computer_ai_algo(brd, COMPUTER_MARKER) # ai attack
+  square = computer_ai_algo(brd, COMPUTER_MARKER)
   if !square
-    square = computer_ai_algo(brd, PLAYER_MARKER) # ai defense
+    square = computer_ai_algo(brd, PLAYER_MARKER)
   end
 
   if !square && empty_squares(brd).include?(5)
@@ -140,7 +140,7 @@ def decide_first_turn
   end
 end
 
-def alternate_player(current_player) # remove return syntax to see glitch
+def alternate_player(current_player)
   return 'Computer' if current_player == 'Player'
   return 'Player' if current_player == 'Computer'
 end
