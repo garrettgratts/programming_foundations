@@ -1,7 +1,5 @@
-require 'pry'
-
 BUST_LIMIT = 21
-DEALER_HIT_LIMIT = 17
+DEALER_LIMIT = 17
 BOX_LENGTH = 23
 
 def prompt(msg)
@@ -60,9 +58,9 @@ end
 def format_spaces(total_spaces)
   space = ' '
   if total_spaces.odd?
-    l, r = space * (total_spaces / 2), space * (total_spaces / 2) + space
+    [space * (total_spaces / 2), space * (total_spaces / 2) + space]
   else
-    l, r = space * (total_spaces / 2), space * (total_spaces / 2 )
+    [space * (total_spaces / 2), space * (total_spaces / 2)]
   end
 end
 
@@ -211,8 +209,8 @@ def player_has_21?(players_cards)
   end
 end
 
-def player_hits(deck, players_cards, dealers_cards)
-  prompt "You are about to hit...\n\n"
+def player_hits(deck, players_cards)
+  prompt "You are about to hit..."
   sleep 1
   players_cards << draw_card(deck)
 end
@@ -251,56 +249,48 @@ loop do
     display_dealers_card(dealers_cards)
     break if player_has_21?(players_cards)
     answer = prompt_player
-    player_hits(deck, players_cards, dealers_cards) if answer == 'hit'
+    player_hits(deck, players_cards) if answer == 'hit'
     break if stayed?(answer) || busted?(players_cards)
   end
 
-  if busted?(players_cards)
-    update_scores!(scores, players_cards, dealers_cards)
-    if grand_winner?(scores)
-      display_scores(scores)
-      display_all_hands(players_cards, dealers_cards)
-      break unless rematch?(players_cards, dealers_cards)
-      reset_scores(scores)
-    else
-      display_scores(scores)
-      display_all_hands(players_cards, dealers_cards)
-      prompt 'You busted!'
-      prompt_to_continue
-    end
+  update_scores!(scores, players_cards, dealers_cards)
+  display_scores(scores)
+  display_all_hands(players_cards, dealers_cards)
 
+  if grand_winner?(scores)
+    prompt 'You busted!'
+    break unless rematch?(players_cards, dealers_cards)
+    reset_scores(scores)
+    next
+  elsif busted?(players_cards)
+    prompt 'You busted!'
+    prompt_to_continue
     next
   end
 
-  loop do
+  until busted?(dealers_cards)
     display_scores(scores)
     display_all_hands(players_cards, dealers_cards)
-    break if total(dealers_cards) >= DEALER_HIT_LIMIT
+    break if total(dealers_cards) >= DEALER_LIMIT
     prompt 'Dealer is about to hit!'
     dealers_cards << draw_card(deck)
     prompt_to_continue
   end
 
-  if busted?(dealers_cards)
-    update_scores!(scores, players_cards, dealers_cards)
-    if grand_winner?(scores)
-      display_scores(scores)
-      display_all_hands(players_cards, dealers_cards)
-      break if rematch?(players_cards, dealers_cards)
-      reset_scores(scores)
-    else
-      display_scores(scores)
-      display_all_hands(players_cards, dealers_cards)
-      prompt 'Dealer busted!'
-      prompt_to_continue
-    end
+  update_scores!(scores, players_cards, dealers_cards)
+  display_scores(scores)
+  display_all_hands(players_cards, dealers_cards)
 
+  if grand_winner?(scores)
+    prompt 'Dealer busted!'
+    break if rematch?(players_cards, dealers_cards)
+    reset_scores(scores)
     next
   end
 
   prompt 'Dealer has at least 17!'
-  prompt 'Final comparison...'
-  sleep 1
+  prompt 'Calculating results...'
+  sleep 1.5
   update_final_score!(scores, players_cards, dealers_cards)
 
   if grand_winner?(scores)
